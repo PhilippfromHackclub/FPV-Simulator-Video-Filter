@@ -1,14 +1,16 @@
 # FPV-Simulator-Video-Filter
-This is a video filter adding an analog look to FPV simulators. There is also a settings menu in which all the effects can be changed.<br> 
-The Filter also has the option to take screenshots and screen recordings.
+This is a Windows tool that captures the live-feed from an FPV-Simulator and applies a real-time analog-style video filter (scanlines, noise,glitches,signal loss, chromatic aberration), and forwards mouse clicks through to the simulator.<br>
+All from a resizable window that goes to even borderless-fullscreen with **F** for the best user experience. <br>
+It also has a settings menu in which all the effects can be changed, customized or presets chosen. <br>
+When closing the tool, a settings backup of the new changed one will be saved and automatically restored after reopening. <br>
+It also saves the last Simulator it was used with and chooses it directly when opened.<br>
+The tool also allows screenshots and screen recordings to be made directly using **S** or **R**.
+
 <img src="https://cdn.hackclub.com/01a030ce-5f82-76e8-a306-491d9094d616/Screenshot%202026-08-24%20014501.png" width="100%" height="100%" alt="Boat" >
 
 ## Run Program
 ### To run the Python File
 To open the program open a **Terminal** in the folder and and run ```python video_filter.py```<br>
-
-<img src="https://cdn.hackclub.com/01a030fc-47e7-7e07-a36a-259b577501e1/Run%20Python%20Program.png" width="80%" height="80%" alt="Run Python Program" ><br>
-
 Then select the wanted window by typing in the number in front of it and and then **Press Enter**
 
 <img src="https://cdn.hackclub.com/01a0310d-bbc1-722e-be13-b0eb745e42aa/Select%20Window.png" width="80%" height="80%" alt="Select Window" >
@@ -33,3 +35,7 @@ The settings menu is available in **English and German**:
 **S** = Takes Screenshots<br>
 **R** = Starts/Stops Recording<br>
 **Q** = Quits the Program<br>
+
+
+
+<img src="https://cdn.hackclub.com/01a030fc-47e7-7e07-a36a-259b577501e1/Run%20Python%20Program.png" width="80%" height="80%" alt="Run Python Program" ><br>
