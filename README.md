@@ -8,7 +8,7 @@ The tool also allows screenshots and screen recordings to be made directly using
 
 The tool was built to recreate the analog look and get one used to the scanlines and glitches while practicing.
 
-<img src="https://cdn.hackclub.com/01a030ce-5f82-76e8-a306-491d9094d616/Screenshot%202026-08-24%20014501.png" width="100%" height="100%" alt="Boat" >
+<img src="https://cdn.hackclub.com/01a030ce-5f82-76e8-a306-491d9094d616/Screenshot%202026-08-24%20014501.png" width="100%" height="100%" alt="Video Filter" >
 
 ## Features
 + **Live window capture** — automatically lists all open windows and captures the selected one via the `**Windows Graphics Capture API** (``windows-capture``), with no manual window-title typing required.
@@ -28,42 +28,40 @@ The tool was built to recreate the analog look and get one used to the scanlines
 + **Borderless fullscreen toogle** — press``F`` to switch the preview window to true borderless fullscreen.
 + **Automatic window icon** — the preview window inherits the simulator's own icon where possible, with a generated fallback icon.
 
+| Settings English | Settings German |
+| ---------------- | --------------- |
+<img src="https://cdn.hackclub.com/01a03197-04c6-7f21-9776-951e96024f2d/Settings_English.png" width="100%" height="100%" alt="Settings English" > | <img src="https://cdn.hackclub.com/01a03197-2604-7d76-8995-5d35d0ca545f/Settings_German.png" width="100%" height="100%" alt="Settings German" >
+
 ## Requirements
 + **Windows 10/11**
 + **Python 3.10+**
 + **Dependencies:**
 
-´´pip install opencv-python pydirectinput py32 windows-capture pillow´´
+``pip install opencv-python pydirectinput py32 windows-capture pillow``
 
-
-## Run Program
-### To run the Python File
-To open the program open a **Terminal** in the folder and and run ``python video_filter.py``<br>
-Then select the wanted window by typing in the number in front of it and and then **Press Enter**
-
-<img src="https://cdn.hackclub.com/01a0310d-bbc1-722e-be13-b0eb745e42aa/Select%20Window.png" width="80%" height="80%" alt="Select Window" >
-
-
-### To create the .exe file (if needed)
-Open **PowerShell** and change to the folder where the **video_filter.py** and **fpv_icon.ico** files are saved. 
-<img src="https://cdn.hackclub.com/01a03120-68b2-76b2-b2d9-86669e3f9f52/Move%20to%20Folder.png" width="80%" height="80%" alt="Move to Folder" >
-Then type **pyinstaller --onefile --icon=fpv_icon.ico --add-data "fpv_icon.ico;." video_filter.py**
-<img src="https://cdn.hackclub.com/01a03120-8814-7663-86f8-6136695f0cc8/Create%20.exe.png" width="100%" height="100%" alt="Create .exe" >
-
-## Settings Menu
-The settings menu allows the changing of the following with sliders:<br>
-**Noise/Scanline Strength/Scanline Speed/Scanline Spacing/Glitch Chance/Signal Loss Chance/Bad Signal Chance/Chromatic Aberration**<br>
-The settings menu is available in **English and German**:
-| English Version | German Version |
-| --------------- | -------------- |
-| <img src="https://cdn.hackclub.com/01a030d4-b7e9-744e-8f4d-eb1fdad48bbb/Screenshot%202026-08-24%20014517.png" width="100%" height="100%" alt="English Settings Version" > | <img src="https://cdn.hackclub.com/01a030d4-e0b0-78a1-9fc6-c318b22b936d/Screenshot%202026-08-24%20014523.png" width="100%" height="100%" alt="German Settings Version" > |
-
-**Hotkeys**:<br>
+## Usage
+1. Run the script(or the built .exe, see below):
+   ``python video_filter.py
+2. A console window lists all currently open window. Enter the number of the simulator window chosen to capture (or it will be auto-selected if it matches your last session).
+3. A live-feed window opens, alongside an Einstellungen(Settings) window with sliders for every filter effect.
+4. Adjust filters live, pick presets, or switch language directly in the settings window.
+   
+## Keyboard controls (live-feed window focused)
 **F** = Switches between borderless fullscreen and windowed<br>
 **S** = Takes Screenshots<br>
 **R** = Starts/Stops Recording<br>
 **Q** = Quits the Program<br>
+Left-clicking inside the live-feed window forwards the click to the simulator at the correct scaled position.
 
 
+## Building a standalone .exe
+No Python installation required for end users — package it with PyInstaller:<br>
+``pip install pyinstaller``<br>
+``pyinstaller --onefile --icon=fpv_icon.ico --add-data "fpv_icon.ico;." video_filter.py``<br>
+The resulting ``video_filter.exe``(in ``dist/``) is fully self-contained. Settings, recordings, and screenshots are saved next to the ``.exe`` itself, not in a temp folder.<br>
+>[!Note]
+>Note: a console window is intentionally kept ( no ``-- noconsole``)<br>
+>since window selection happanes via a text prompt.<br>
 
-<img src="https://cdn.hackclub.com/01a030fc-47e7-7e07-a36a-259b577501e1/Run%20Python%20Program.png" width="80%" height="80%" alt="Run Python Program" ><br>
+## Platform support
+This tool is Windows-only. It relies on the **Windows Graphics Capture API** (``windows-capture``), ``pywin32`` (windoe/icon handling), and ``pydirectinput`` (click forwarding) — none of which have macOS/Linux equivalents (to my knolage). A cross-platform version would require a substantial rewrite using platform_native capture and input APIs.
