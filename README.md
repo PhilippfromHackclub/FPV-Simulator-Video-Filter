@@ -1,16 +1,44 @@
 # FPV-Simulator-Video-Filter
 This is a Windows tool that captures the live-feed from an FPV-Simulator and applies a real-time analog-style video filter (scanlines, noise,glitches,signal loss, chromatic aberration), and forwards mouse clicks through to the simulator.<br>
-All from a resizable window that goes to even borderless-fullscreen with **F** for the best user experience. <br>
+All from a resizable window that goes to even borderless-fullscreen with ``F`` for the best user experience. <br>
 It also has a settings menu in which all the effects can be changed, customized or presets chosen. <br>
 When closing the tool, a settings backup of the new changed one will be saved and automatically restored after reopening. <br>
 It also saves the last Simulator it was used with and chooses it directly when opened.<br>
-The tool also allows screenshots and screen recordings to be made directly using **S** or **R**.
+The tool also allows screenshots and screen recordings to be made directly using ``S`` or ``R``.
+
+The tool was built to recreate the analog look and get one used to the scanlines and glitches while practicing.
 
 <img src="https://cdn.hackclub.com/01a030ce-5f82-76e8-a306-491d9094d616/Screenshot%202026-08-24%20014501.png" width="100%" height="100%" alt="Boat" >
 
+## Features
++ **Live window capture** — automatically lists all open windows and captures the selected one via the `**Windows Graphics Capture API** (``windows-capture``), with no manual window-title typing required.
++ **Click-through** — left clicks in the live-feed window are forwarded to the simulator at the correct scaled coordinates, so interacting with menus is still possible without switching windows.
++ **Real-time analog video filter**
+  + Animated scanlines (adjustable spacing, strenght, and scroll speed)
+  + Film-grain style noise
+  + Random thick "tracking error" glitch bars
+  + Occasional full signal-loss overlay ("NO SIGNAL")
+  + "Bad signal" effect — every line is shifted, image stays visible
+  + Chromatic aberrration (RGB channel offset)
++ **In-app settings panel** — custom-drawn sliders (no native OS trackbar limitations) for every filter parameter, with a visible drag handle.
++ **Presets** — one-click "Standard", "Clean", "Old CRT", and "Extremely Trashed" presete that set all sliders at once.
++ **Bilingual UI** — toggle between German and English directly from a clickable button in the settings panel.
++ **Recording** — press ``R`` to start/stop saving the filtered /feed as an ``.mp4``, ``S`` to save a ``.png`` screenshot.
++ **Persistent settings** — slider values, language, and the last-used simulator window are saved to ``einstellungen.json`` and restored automatically on the next launch (including auto-selecting the last window if it's still open).
++ **Borderless fullscreen toogle** — press``F`` to switch the preview window to true borderless fullscreen.
++ **Automatic window icon** — the preview window inherits the simulator's own icon where possible, with a generated fallback icon.
+
+## Requirements
++ **Windows 10/11**
++ **Python 3.10+**
++ **Dependencies:**
+
+´´pip install opencv-python pydirectinput py32 windows-capture pillow´´
+
+
 ## Run Program
 ### To run the Python File
-To open the program open a **Terminal** in the folder and and run ```python video_filter.py```<br>
+To open the program open a **Terminal** in the folder and and run ``python video_filter.py``<br>
 Then select the wanted window by typing in the number in front of it and and then **Press Enter**
 
 <img src="https://cdn.hackclub.com/01a0310d-bbc1-722e-be13-b0eb745e42aa/Select%20Window.png" width="80%" height="80%" alt="Select Window" >
