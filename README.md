@@ -64,4 +64,4 @@ The resulting ``video_filter.exe``(in ``dist/``) is fully self-contained. Settin
 >since window selection happanes via a text prompt.<br>
 
 ## Platform support
-This tool is Windows-only. It relies on the **Windows Graphics Capture API** (``windows-capture``), ``pywin32`` (windoe/icon handling), and ``pydirectinput`` (click forwarding) — none of which have macOS/Linux equivalents (to my knolage). A cross-platform version would require a substantial rewrite using platform_native capture and input APIs.
+This tool is Windows-only. It relies on the **Windows Graphics Capture API** (``windows-capture``), ``pywin32`` (windoe/icon handling), and ``pydirectinput`` (click forwarding) — none of which have macOS/Linux equivalents (to my knowledge). A cross-platform version would require a substantial rewrite using platform_native capture and input APIs.
